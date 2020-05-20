@@ -1,0 +1,33 @@
+import javax.swing.*;
+
+public class Principal {
+
+    public static void main(String[] args) {
+
+        PilhaChar p = new PilhaChar(30);
+        StringBuilder builder = new StringBuilder(30);
+        String original, resultado;
+
+        original = JOptionPane.showInputDialog(null, "Digite a frase:");
+
+        original = original
+                .toLowerCase()
+                .replaceAll("\\s+", "");
+
+        for (char c : original.toCharArray()) {
+            p.empilhar(c);
+        }
+
+        while (!p.vazia())
+        {
+            builder.append(p.desempilhar());
+        }
+
+        resultado = builder.toString();
+
+        if (resultado.equals(original))
+            JOptionPane.showMessageDialog(null, "A entrada é um Palíndromo!");
+        else
+            JOptionPane.showMessageDialog(null, "A entrada NÃO é um Palíndromo!");
+    }
+}
